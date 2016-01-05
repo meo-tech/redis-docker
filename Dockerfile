@@ -2,22 +2,22 @@
 # Redis from Source on Alpine Linux
 ###################################
 
-# Base Image
+# base
 FROM alpine:3.1
 
-# Maintainer Information
+# maintainer
 MAINTAINER Marcus Schuh <mschuh@meo-tech.de>
 
-# Change to /tmp
+# change to /tmp
 WORKDIR /tmp
 
-# Environment
+# environment
 ENV REDIS_VER redis-3.0.6
 
-# Clean and Update the System
+# update & install essential tools
 RUN apk --update add wget build-base 
 
-# NGINX Source
+# Redis source
 RUN wget http://download.redis.io/releases/${REDIS_VER}.tar.gz && \
     tar -zxvf ${REDIS_VER}.tar.gz && \
     rm -rf ${REDIS_VER}.tar.gz && \
@@ -28,9 +28,8 @@ RUN wget http://download.redis.io/releases/${REDIS_VER}.tar.gz && \
     rm -rf /tmp/${REDIS_VER} && \
     rm -rf /var/cache/apk/*
 
-# Expose Ports
+# expose ports
 EXPOSE 6379
 
-# Start NGINX
-#CMD ["redis-server"]
-ENTRYPOINT ["redis-server"]
+# start Redis
+CMD ["redis-server"]
