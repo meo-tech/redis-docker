@@ -3,7 +3,7 @@
 ###################################
 
 # base
-FROM alpine:3.1
+FROM alpine:latest
 
 # maintainer
 MAINTAINER Marcus Schuh <mschuh@meo-tech.de>
@@ -12,7 +12,7 @@ MAINTAINER Marcus Schuh <mschuh@meo-tech.de>
 WORKDIR /tmp
 
 # environment
-ENV REDIS_VER redis-3.0.6
+ENV REDIS_VER redis-4.0.2
 
 # update & install essential tools
 RUN apk --update add wget build-base 
