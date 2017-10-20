@@ -15,7 +15,7 @@ WORKDIR /tmp
 ENV REDIS_VER redis-4.0.2
 
 # update & install essential tools
-RUN apk --update add wget build-base 
+RUN apk --update add wget build-base linux-headers
 
 # Redis source
 RUN wget http://download.redis.io/releases/${REDIS_VER}.tar.gz && \
